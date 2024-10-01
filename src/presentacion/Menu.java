@@ -1,12 +1,14 @@
 package presentacion;
-
+import negocio.Moneda;
+import persistencia.ApiMonedas;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
 
     Scanner input = new Scanner(System.in);
 
-    public boolean menu(){
+    public boolean mostrarMenu() throws IOException, InterruptedException {
         System.out.println("""
                 
                 *************** Conversor de Moneda ***************
@@ -18,26 +20,43 @@ public class Menu {
                 4) Real Brazileño   ===>  Dolar
                 5)          Dolar   ===>  Peso Colombiano
                 6) Peso Colombiano  ===>  Dolar
-                7) Salir 
+                7) Ultimas conversiones
+                8) Historial completo 
+                9) Salir 
                 
                 Presione un numero, de acuerdo a la conversion que desea realizar: 
                 *****************************************************
                 """);
         int opcion = Integer.parseInt(input.nextLine());
-        if (opcion == 7){
+        if (opcion == 9){
             return false;
         }
-        procesarOpcion(opcion);
+        ApiMonedas api = new ApiMonedas();
+        Moneda miMoneda = api.info(procesarOpcion(opcion));
+        System.out.println(miMoneda.getValorNacional());
         return true;
     }
 
-    private void procesarOpcion(int opcion) {
+    private String procesarOpcion(int opcion) {
         switch (opcion){
             case 1:
-                System.out.println("Seleccionaste la opcion uno");
-                break;
+                return "USD";
+            case 2:
+                return "EUR";
+            case 3:
+                return "Seleccionaste la opcion 3";
+            case 4:
+                return "Seleccionaste la opcion 4";
+            case 5:
+                return "Seleccionaste la opcion 5";
+            case 6:
+                return "Seleccionaste la opcion 6";
+            case 7:
+                return "Seleccionaste la opcion 7";
+            case 8:
+                return "Seleccionaste la opcion 8";
             default:
-                System.out.println("Opcion no valida");
+                return "Opcion no valida";
         }
     }
 
