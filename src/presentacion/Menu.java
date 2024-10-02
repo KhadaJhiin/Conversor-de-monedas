@@ -31,16 +31,16 @@ public class Menu {
         if (opcion == 9){
             return false;
         }
-        ApiMonedas api = new ApiMonedas();
-        Moneda miMoneda = api.info(procesarOpcion(opcion));
-        System.out.println(miMoneda.getValorNacional());
+        System.out.println(procesarOpcion(opcion));
         return true;
     }
 
-    private String procesarOpcion(int opcion) {
+    private String procesarOpcion(int opcion) throws IOException, InterruptedException {
         switch (opcion){
             case 1:
-                return "USD";
+                System.out.println("Ingrese el valor a convertir: ");
+                double valorcop = Double.parseDouble(input.nextLine());
+                return convertirMoneda("USD","COP", valorcop);
             case 2:
                 return "EUR";
             case 3:
@@ -58,6 +58,13 @@ public class Menu {
             default:
                 return "Opcion no valida";
         }
+    }
+
+    public String convertirMoneda(String monBase, String monAConvertir, double montoIngresado)
+            throws IOException, InterruptedException {
+        ApiMonedas api = new ApiMonedas();
+        Moneda miMoneda = api.info(monBase,monAConvertir,montoIngresado);
+        return "Base money: " + miMoneda.getValorNacional() + "Converted money: " + miMoneda.getValorExtranjero();
     }
 
     public void despedida(){

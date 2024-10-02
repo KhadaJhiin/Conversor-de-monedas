@@ -7,8 +7,8 @@ import java.util.Objects;
 public class Moneda {
     @SerializedName("base_code")
     private String valorNacional;
-    @SerializedName("AFN")
-    private Double valorExtranjero;
+    @SerializedName("conversion_result")
+    private double valorExtranjero;
 
     public Moneda() {}
 

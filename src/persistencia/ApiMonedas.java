@@ -11,8 +11,10 @@ import java.net.http.HttpResponse;
 
 public class ApiMonedas {
 
-    public Moneda info(String opcion) throws IOException, InterruptedException {
-        String URL = "https://v6.exchangerate-api.com/v6/0b901fbc2e54ed5edf3a9f32/latest/"+opcion;
+    public Moneda info(String monedaBase, String monedaTransformada, double valorAconvertir)
+            throws IOException, InterruptedException {
+        String URL = "https://v6.exchangerate-api.com/v6/0b901fbc2e54ed5edf3a9f32/pair/" +
+                monedaBase + "/" + monedaTransformada + "/" + valorAconvertir;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(URL))
@@ -20,7 +22,6 @@ public class ApiMonedas {
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
         Gson gson = new Gson();
-        Moneda moneda = gson.fromJson(response.body(), Moneda.class);
-        return moneda;
+        return gson.fromJson(response.body(), Moneda.class);
     }
 }
