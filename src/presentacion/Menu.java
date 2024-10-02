@@ -38,19 +38,17 @@ public class Menu {
     private String procesarOpcion(int opcion) throws IOException, InterruptedException {
         switch (opcion){
             case 1:
-                System.out.println("Ingrese el valor a convertir: ");
-                double valorcop = Double.parseDouble(input.nextLine());
-                return convertirMoneda("USD","COP", valorcop);
+                return convertirMoneda("USD","ARS");
             case 2:
-                return "EUR";
+                return convertirMoneda("ARS","USD");
             case 3:
-                return "Seleccionaste la opcion 3";
+                return convertirMoneda("USD","BRL");
             case 4:
-                return "Seleccionaste la opcion 4";
+                return convertirMoneda("BRL","USD");
             case 5:
-                return "Seleccionaste la opcion 5";
+                return convertirMoneda("USD","COP");
             case 6:
-                return "Seleccionaste la opcion 6";
+                return convertirMoneda("COP","USD");
             case 7:
                 return "Seleccionaste la opcion 7";
             case 8:
@@ -60,11 +58,15 @@ public class Menu {
         }
     }
 
-    public String convertirMoneda(String monBase, String monAConvertir, double montoIngresado)
+    public String convertirMoneda(String monBase, String monAConvertir)
             throws IOException, InterruptedException {
+        System.out.println("Ingrese el valor a convertir: ");
+        double valorcop = Double.parseDouble(input.nextLine());
+        //return convertirMoneda("USD","COP", valorcop);
         ApiMonedas api = new ApiMonedas();
-        Moneda miMoneda = api.info(monBase,monAConvertir,montoIngresado);
-        return "Base money: " + miMoneda.getValorNacional() + "Converted money: " + miMoneda.getValorExtranjero();
+        Moneda miMoneda = api.info(monBase,monAConvertir,valorcop);
+        return valorcop + " " + miMoneda.getMonedaNacional() + " equivalen a : " + miMoneda.getValorExtranjero()
+                + " " + miMoneda.getMonedaExtranjera();
     }
 
     public void despedida(){
