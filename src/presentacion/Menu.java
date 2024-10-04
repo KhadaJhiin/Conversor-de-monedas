@@ -1,6 +1,6 @@
 package presentacion;
 import negocio.Moneda;
-import persistencia.ApiMonedas;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -36,62 +36,26 @@ public class Menu {
     }
 
     private String procesarOpcion(int opcion) throws IOException, InterruptedException {
+        Moneda moneda = new Moneda();
         switch (opcion){
             case 1:
-                return convertirMoneda("USD","ARS");
+                return moneda.convertirMoneda("USD","ARS",input);
             case 2:
-                return convertirMoneda("ARS","USD");
+                return moneda.convertirMoneda("ARS","USD",input);
             case 3:
-                return convertirMoneda("USD","BRL");
+                return moneda.convertirMoneda("USD","BRL",input);
             case 4:
-                return convertirMoneda("BRL","USD");
+                return moneda.convertirMoneda("BRL","USD",input);
             case 5:
-                return convertirMoneda("USD","COP");
+                return moneda.convertirMoneda("USD","COP",input);
             case 6:
-                return convertirMoneda("COP","USD");
+                return moneda.convertirMoneda("COP","USD",input);
             case 7:
                 return "Seleccionaste la opcion 7";
             case 8:
                 return "Seleccionaste la opcion 8";
             default:
                 return "Opcion no valida";
-        }
-    }
-
-    public String convertirMoneda(String monBase, String monAConvertir)
-            throws IOException, InterruptedException {
-        System.out.println("Ingrese el valor a convertir: ");
-        double valorcop = Double.parseDouble(input.nextLine());
-        ApiMonedas api = new ApiMonedas();
-        Moneda miMoneda = api.info(monBase,monAConvertir,valorcop);
-        return "El valor de " + valorcop + " " + paises(miMoneda.getMonedaNacional(),valorcop) + " corresponde al valor final de : " + miMoneda.getValorExtranjero()
-                + " " + paises(miMoneda.getMonedaExtranjera(), miMoneda.getValorExtranjero());
-    }
-
-    public String paises(String codigoPais, double pesos){
-        switch (codigoPais){
-            case "ARS" :
-                if (pesos == 1){
-                    return "peso Argentino";
-                }else
-                    return "pesos Argentinos";
-            case "USD" :
-                if (pesos == 1){
-                    return "dolar";
-                }else
-                    return "dolares";
-            case "BRL" :
-                if (pesos == 1){
-                    return "real Brazilero";
-                }else
-                    return "reales brazileros";
-            case "COP" :
-                if (pesos == 1){
-                    return "peso Colombiano";
-                }else
-                    return "pesos Colombianos";
-            default:
-                return "";
         }
     }
 
