@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 public class Moneda {
-    @SerializedName("base_code")
+    //@SerializedName("base_code")
     private String monedaNacional;
-    @SerializedName("conversion_result")
+    //@SerializedName("conversion_result")
     private double valorExtranjero;
-    @SerializedName("target_code")
+    //@SerializedName("target_code")
     private String monedaExtranjera;
 
     public Moneda() {}
@@ -18,6 +18,12 @@ public class Moneda {
         this.monedaNacional = nacionalidad;
         this.valorExtranjero = valor;
         this.monedaExtranjera = monedaExtranjera;
+    }
+
+    public Moneda(MonedaExchange monedaEx) {
+        this.monedaNacional = monedaEx.base_code();
+        this.valorExtranjero = monedaEx.conversion_result();
+        this.monedaExtranjera = monedaEx.target_code();
     }
 
     public String getMonedaExtranjera() {

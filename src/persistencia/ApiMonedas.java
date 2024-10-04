@@ -1,7 +1,10 @@
 package persistencia;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import negocio.Moneda;
+import negocio.MonedaExchange;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,7 +24,9 @@ public class ApiMonedas {
                 .build();
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
+        //Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
         Gson gson = new Gson();
-        return gson.fromJson(response.body(), Moneda.class);
+        MonedaExchange monedaEx = gson.fromJson(response.body(), MonedaExchange.class);
+        return new Moneda(monedaEx);
     }
 }

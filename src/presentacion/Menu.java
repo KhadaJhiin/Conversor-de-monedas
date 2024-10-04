@@ -62,11 +62,37 @@ public class Menu {
             throws IOException, InterruptedException {
         System.out.println("Ingrese el valor a convertir: ");
         double valorcop = Double.parseDouble(input.nextLine());
-        //return convertirMoneda("USD","COP", valorcop);
         ApiMonedas api = new ApiMonedas();
         Moneda miMoneda = api.info(monBase,monAConvertir,valorcop);
-        return valorcop + " " + miMoneda.getMonedaNacional() + " equivalen a : " + miMoneda.getValorExtranjero()
-                + " " + miMoneda.getMonedaExtranjera();
+        return "El valor de " + valorcop + " " + paises(miMoneda.getMonedaNacional(),valorcop) + " corresponde al valor final de : " + miMoneda.getValorExtranjero()
+                + " " + paises(miMoneda.getMonedaExtranjera(), miMoneda.getValorExtranjero());
+    }
+
+    public String paises(String codigoPais, double pesos){
+        switch (codigoPais){
+            case "ARS" :
+                if (pesos == 1){
+                    return "peso Argentino";
+                }else
+                    return "pesos Argentinos";
+            case "USD" :
+                if (pesos == 1){
+                    return "dolar";
+                }else
+                    return "dolares";
+            case "BRL" :
+                if (pesos == 1){
+                    return "real Brazilero";
+                }else
+                    return "reales brazileros";
+            case "COP" :
+                if (pesos == 1){
+                    return "peso Colombiano";
+                }else
+                    return "pesos Colombianos";
+            default:
+                return "";
+        }
     }
 
     public void despedida(){
