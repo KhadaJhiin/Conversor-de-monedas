@@ -1,95 +1,114 @@
 package negocio;
-
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
-import java.awt.*;
+import com.google.gson.GsonBuilder;
+import exepciones.ValorFueraDeRangoExepcion;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Objects;
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Moneda {
-    //@SerializedName("base_code")
-    private String monedaNacional;
-    //@SerializedName("conversion_result")
-    private double valorExtranjero;
-    //@SerializedName("target_code")
+
+    //Atributos
+
+    private String fechaCreacion;
+    private String horaDeConversion;
+    private String monedaBase;
+    private double valorAConvertir;
     private String monedaExtranjera;
+    private double tasaDeConversion;
+    private double resultado;
+
+    //Constructor
 
     public Moneda() {}
-
-    public Moneda(String nacionalidad, Double valor, String monedaExtranjera) {
-        this.monedaNacional = nacionalidad;
-        this.valorExtranjero = valor;
-        this.monedaExtranjera = monedaExtranjera;
-    }
-
     public Moneda(MonedaExchange monedaEx) {
-        this.monedaNacional = monedaEx.base_code();
-        this.valorExtranjero = monedaEx.conversion_result();
+        this.fechaCreacion = fechaCreacionFormateada("dd-MM-yyyy");
+        this.horaDeConversion = fechaCreacionFormateada("HH:mm:ss");
+        this.monedaBase = monedaEx.base_code();
         this.monedaExtranjera = monedaEx.target_code();
+        this.tasaDeConversion = monedaEx.conversion_rate();
     }
 
+    //GETTERS AND SETTERS
+
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+    public String getHoraDeConversion() {
+        return horaDeConversion;
+    }
+    public void setHoraDeConversion(String horaDeConversion) {
+        this.horaDeConversion = horaDeConversion;
+    }
+    public String getMonedaBase() {
+        return monedaBase;
+    }
+    public void setMonedaBase(String monedaBase) {
+        this.monedaBase = monedaBase;
+    }
+    public double getValorAConvertir() {
+        return valorAConvertir;
+    }
+    public void setValorAConvertir(double valorAConvertir) {
+        this.valorAConvertir = valorAConvertir;
+    }
     public String getMonedaExtranjera() {
         return monedaExtranjera;
     }
-
-    public String getMonedaNacional() {
-        return monedaNacional;
+    public void setMonedaExtranjera(String monedaExtranjera) {
+        this.monedaExtranjera = monedaExtranjera;
+    }
+    public double getTasaDeConversion() {
+        return tasaDeConversion;
+    }
+    public void setTasaDeConversion(double tasaDeConversion) {
+        this.tasaDeConversion = tasaDeConversion;
+    }
+    public double getResultado() {
+        return resultado;
+    }
+    public void setResultado(double resultado) {
+        this.resultado = resultado;
     }
 
-    public Double getValorExtranjero() {
-        return valorExtranjero;
-    }
+    //Metodos
 
-    public Moneda info(String monedaBase, String monedaTransformada, double valorAconvertir)
-            throws IOException, InterruptedException {
-        String URL = "https://v6.exchangerate-api.com/v6/0b901fbc2e54ed5edf3a9f32/pair/" +
-                monedaBase + "/" + monedaTransformada + "/" + valorAconvertir;
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(URL))
-                .build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
-        //Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-        Gson gson = new Gson();
-        MonedaExchange monedaEx = gson.fromJson(response.body(), MonedaExchange.class);
-        return new Moneda(monedaEx);
+    public String imprimir(Moneda moneda){
+        DecimalFormat formatoDecimal = new DecimalFormat("#,##0.00");
+        DecimalFormat formatoCientifico = new DecimalFormat("0.######E0");
+        return "El valor de " + formatearNumero(valorAConvertir,formatoDecimal,formatoCientifico) + " " + nombrePais(moneda.monedaBase, valorAConvertir) + " corresponde al valor final de : " + formatearNumero(moneda.resultado,formatoDecimal,formatoCientifico)
+                + " " + nombrePais(moneda.monedaExtranjera, moneda.resultado);
     }
-
-    public String convertirMoneda(String monBase, String monAConvertir, Scanner input)
-            throws IOException, InterruptedException {
-        System.out.println("Ingrese el valor a convertir: ");
-        double valorcop = Double.parseDouble(input.nextLine());
-        Moneda miMoneda = new Moneda();
-        miMoneda = miMoneda.info(monBase,monAConvertir,valorcop);
-        return "El valor de " + valorcop + " " + nombrePais(miMoneda.getMonedaNacional(),valorcop) + " corresponde al valor final de : " + miMoneda.getValorExtranjero()
-                + " " + nombrePais(miMoneda.getMonedaExtranjera(), miMoneda.getValorExtranjero());
-    }
-
     public String nombrePais(String codigoPais, double pesos){
         switch (codigoPais){
             case "ARS" :
-                if (pesos == 1){
+                if (pesos == 1 || pesos == -1){
                     return "peso Argentino";
                 }else
                     return "pesos Argentinos";
             case "USD" :
-                if (pesos == 1){
+                if (pesos == 1 || pesos == -1){
                     return "dolar";
                 }else
                     return "dolares";
             case "BRL" :
-                if (pesos == 1){
+                if (pesos == 1 || pesos == -1){
                     return "real Brazilero";
                 }else
                     return "reales brazileros";
             case "COP" :
-                if (pesos == 1){
+                if (pesos == 1 || pesos == -1){
                     return "peso Colombiano";
                 }else
                     return "pesos Colombianos";
@@ -97,17 +116,16 @@ public class Moneda {
                 return "";
         }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Moneda moneda = (Moneda) o;
-        return Double.compare(valorExtranjero, moneda.valorExtranjero) == 0 && Objects.equals(monedaNacional, moneda.monedaNacional) && Objects.equals(monedaExtranjera, moneda.monedaExtranjera);
+    public String formatearNumero(double numero, DecimalFormat formatoDecimal, DecimalFormat formatoCientifico) {
+        String numeroStr = formatoDecimal.format(numero);
+        if (numeroStr.replace(".", "").length() > 20){
+            return formatoCientifico.format(numero);
+        } else {
+            return numeroStr;
+        }
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(monedaNacional, valorExtranjero, monedaExtranjera);
+    public String fechaCreacionFormateada(String formato) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato);
+        return LocalDateTime.now().format(formatter);
     }
 }
