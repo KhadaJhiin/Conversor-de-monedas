@@ -51,7 +51,9 @@ public class Moneda {
     public String imprimir(Moneda moneda){
         DecimalFormat formatoDecimal = new DecimalFormat("#,##0.00");
         DecimalFormat formatoCientifico = new DecimalFormat("0.######E0");
-        return "El valor de " + formatearNumero(valorAConvertir,formatoDecimal,formatoCientifico) + " " + nombrePais(moneda.monedaBase, valorAConvertir) + " corresponde al valor final de : " + formatearNumero(moneda.resultado,formatoDecimal,formatoCientifico)
+        return "El valor de " + formatearNumero(valorAConvertir,formatoDecimal,formatoCientifico) + " " +
+                nombrePais(moneda.monedaBase, valorAConvertir) + " corresponde al valor final de : " +
+                formatearNumero(moneda.resultado,formatoDecimal,formatoCientifico)
                 + " " + nombrePais(moneda.monedaExtranjera, moneda.resultado);
     }
     public String nombrePais(String codigoPais, double pesos){

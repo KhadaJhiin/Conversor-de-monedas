@@ -29,27 +29,22 @@ public class Conversor {
         return new Moneda(monedaEx);
     }
     public Moneda convertirMoneda(String monBase, String monAConvertir, Scanner input) throws IOException, InterruptedException, ValorFueraDeRangoExepcion {
-
         System.out.println("Ingrese el valor a convertir: ");
         String valorCop = input.nextLine();
         double valorAConvertir;
-
         try {
             valorAConvertir = Double.parseDouble(valorCop);
         } catch (Exception e) {
             throw new ValorFueraDeRangoExepcion("Ingrese solo números, recuerde usar '.' (punto) en vez de ',' (coma)\n" +
                      " para representar decimales");
         }
-
         if (valorAConvertir > 1.7e308){
             throw new ValorFueraDeRangoExepcion("El valor de entrada supera el rango permitido");
         }
-
         Moneda miMoneda;
         miMoneda = info(monBase,monAConvertir);
         miMoneda.setValorAConvertir(valorAConvertir);
         miMoneda.setResultado(miMoneda.getTasaDeConversion() * valorAConvertir);
-
         if (miMoneda.getResultado() > 1.7e308){
             throw new ValorFueraDeRangoExepcion("El valor de salida supera el rango permitido");
         }
