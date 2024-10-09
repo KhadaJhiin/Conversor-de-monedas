@@ -1,6 +1,10 @@
 <p align="center">
   <img src="/images/conversion.jpg" alt="Portada del proyecto" width="600">
 </p>
+<p align="center">
+  <img src="https://img.shields.io/github/stars/KhadaJhiin?style=social">
+  <img src="https://img.shields.io/badge/Version-1.0-blue" alt="Version 1.0">
+</p>
 
 <h1 align = "center"> Conversor de Monedas</h1>
 
@@ -28,7 +32,7 @@ Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente insta
 
 3. Compila y ejecuta el proyecto:
 
-## Uso
+## 🔥Uso
 
 1. Al ejecutar la aplicación, verás un menú que te permite seleccionar la moneda de origen y destino
    al igual que los dos tipos de historiales disponibles.
@@ -41,29 +45,30 @@ Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente insta
    
 3. La opcion 7 nos devuelve las ultimas 5 conversiones realizadas en el ultimo DIA de uso de la app.
 
-   <img src="/images/usoHistorialParcial.jpg" alt="Ejemplo usando la opcion 7" width="500">
+   <img src="/images/usoHistorialParcial.jpg" alt="Ejemplo usando la opcion 7" width="350">
 
 4. La opcion 8 nos solicita una entrada de acuerdo a la lista de fechas de las cuales se tiene un historial de
    conversiones realizadas.
 
    <img src="/images/opcionesFechas.jpg" alt="Ejemplo usando la opcion 8 entrada" width="500">
    
-   <img src="/images/usoHisotialTotal.jpg" alt="Ejemplo usando la opcion 8 historial" width="500">
+   <img src="/images/usoHisotialTotal.jpg" alt="Ejemplo usando la opcion 8 historial" width="350">
    
 5. Por ultimo con la opcion "9" se termina el programa
 
-   
+## ✔️ Tecnologías utilizadas
+* Java <br><br>
+* ExchangeRate-API <br><br>
 
-## Contribuciones
+## 👨‍💼 Autores
+* Miguel Ortega <br><br>
 
-Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama (`git checkout -b nueva-funcionalidad`).
-3. Realiza tus cambios y realiza un commit (`git commit -m 'Añadir nueva funcionalidad'`).
-4. Envía tus cambios al repositorio remoto (`git push origin nueva-funcionalidad`).
-5. Abre un Pull Request.
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Mira el archivo [LICENSE](LICENSE) para más detalles.
+## :earth_americas: Contacta con migo
+<p align="left">
+	<a href="mailto:jose.miguel.ortega.g@gmail.com"><img src="https://img.icons8.com/bubbles/50/000000/gmail.png" alt="Gmail"/></a>
+	<a href="https://github.com/KhadaJhiin"><img src="https://img.icons8.com/bubbles/50/000000/github.png" alt="GitHub"/></a>
+	<a href="https://www.linkedin.com/in/jose-miguel-ortega-gaviria-648087204/"><img src="https://img.icons8.com/bubbles/50/000000/linkedin.png" alt="LinkedIn"/></a>
+	<a href="https://www.facebook.com/josemiguel.ortega.5"><img src="https://img.icons8.com/bubbles/50/000000/facebook-new.png" alt="Facebook"/></a>
+	<a href="https://www.instagram.com/joselo.ortega/"><img src="https://img.icons8.com/bubbles/50/000000/instagram.png" alt="Instagram"/></a>
+	<a href="https://www.youtube.com/channel/UCMC7N9FRA7wncNXk-Yykh-A"><img src="https://img.icons8.com/bubbles/50/000000/youtube.png" alt="Youtube"/></a>	
+</p>
