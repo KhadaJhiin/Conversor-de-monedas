@@ -1,4 +1,5 @@
 package presentacion;
+
 import exepciones.ValorFueraDeRangoExepcion;
 import negocio.Conversor;
 import negocio.Moneda;
@@ -7,10 +8,15 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
+
+    //Atributos
+
     Moneda moneda;
     Scanner input = new Scanner(System.in);
     Historial historial = new Historial();
     Conversor conversor = new Conversor();
+
+    //Metodos
 
     public boolean mostrarMenu() throws IOException, InterruptedException {
         System.out.println("""
@@ -25,7 +31,7 @@ public class Menu {
                 5)          Dolar   ===>  Peso Colombiano
                 6) Peso Colombiano  ===>  Dolar
                 7) Ultimas conversiones
-                8) Historial completo 
+                8) Historial ultimos 5 dias 
                 9) Salir 
                 
                 Presione un numero, de acuerdo a la conversion que desea realizar: 
@@ -39,6 +45,7 @@ public class Menu {
             System.out.println(procesarOpcion(opcion));
             if (moneda != null){
                 historial.anadirAArchivo(moneda);
+                historial.andirmonedaFecha(moneda);
             }
             return true;
 
@@ -47,7 +54,6 @@ public class Menu {
             return true;
         }
     }
-
     private String procesarOpcion(int opcion) throws IOException, InterruptedException {
         try {
             switch (opcion) {
@@ -70,7 +76,9 @@ public class Menu {
                     this.moneda = conversor.convertirMoneda("COP", "USD", input);
                     return moneda.imprimir(moneda);
                 case 7:
-                    return historial.buscarRegistro("07-10-2024");
+                    return historial.opcionesHistorial(historial.opcionesHistorial("historico_fechas",1),2);
+                case 8 :
+                    return historial.historicoTotal();
                 default:
                     return "Opción no válida";
             }
@@ -82,7 +90,6 @@ public class Menu {
             return e.getMessage();
         }
     }
-
     public void despedida(){
         System.out.println("Gracias por usar la aplicacion, ten un buen dia..!");
     }

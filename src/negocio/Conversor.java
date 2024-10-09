@@ -8,10 +8,11 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Conversor {
+
+    //Metodos
 
     public Moneda info(String monedaBase, String monedaExtrangera) throws IOException, InterruptedException {
         String URL = "https://v6.exchangerate-api.com/v6/0b901fbc2e54ed5edf3a9f32/pair/" +

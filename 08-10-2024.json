@@ -1,0 +1,83 @@
+[
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "10:46:03",
+    "monedaBase": "USD",
+    "valorAConvertir": 5.0,
+    "monedaExtranjera": "ARS",
+    "tasaDeConversion": 975.5,
+    "resultado": 4877.5
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "10:46:17",
+    "monedaBase": "USD",
+    "valorAConvertir": 6.0,
+    "monedaExtranjera": "BRL",
+    "tasaDeConversion": 5.458,
+    "resultado": 32.748000000000005
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "10:46:25",
+    "monedaBase": "USD",
+    "valorAConvertir": 7.0,
+    "monedaExtranjera": "COP",
+    "tasaDeConversion": 4176.0812,
+    "resultado": 29232.568399999996
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "16:25:42",
+    "monedaBase": "USD",
+    "valorAConvertir": 8.0,
+    "monedaExtranjera": "COP",
+    "tasaDeConversion": 4176.0812,
+    "resultado": 33408.6496
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "19:14:23",
+    "monedaBase": "COP",
+    "valorAConvertir": 200000.0,
+    "monedaExtranjera": "USD",
+    "tasaDeConversion": 2.3628E-4,
+    "resultado": 47.256
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "19:14:23",
+    "monedaBase": "COP",
+    "valorAConvertir": 200000.0,
+    "monedaExtranjera": "USD",
+    "tasaDeConversion": 2.3628E-4,
+    "resultado": 47.256
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "19:14:23",
+    "monedaBase": "COP",
+    "valorAConvertir": 200000.0,
+    "monedaExtranjera": "USD",
+    "tasaDeConversion": 2.3628E-4,
+    "resultado": 47.256
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "19:16:00",
+    "monedaBase": "USD",
+    "valorAConvertir": 1.0,
+    "monedaExtranjera": "ARS",
+    "tasaDeConversion": 975.92,
+    "resultado": 975.92
+  },
+  {
+    "fechaCreacion": "08-10-2024",
+    "horaDeConversion": "19:16:00",
+    "monedaBase": "USD",
+    "valorAConvertir": 1.0,
+    "monedaExtranjera": "ARS",
+    "tasaDeConversion": 975.92,
+    "resultado": 975.92
+  }
+]

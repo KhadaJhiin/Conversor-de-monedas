@@ -1,18 +1,9 @@
 package negocio;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import exepciones.ValorFueraDeRangoExepcion;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Moneda {
 
@@ -42,38 +33,11 @@ public class Moneda {
     public String getFechaCreacion() {
         return fechaCreacion;
     }
-    public void setFechaCreacion(String fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-    public String getHoraDeConversion() {
-        return horaDeConversion;
-    }
-    public void setHoraDeConversion(String horaDeConversion) {
-        this.horaDeConversion = horaDeConversion;
-    }
-    public String getMonedaBase() {
-        return monedaBase;
-    }
-    public void setMonedaBase(String monedaBase) {
-        this.monedaBase = monedaBase;
-    }
-    public double getValorAConvertir() {
-        return valorAConvertir;
-    }
     public void setValorAConvertir(double valorAConvertir) {
         this.valorAConvertir = valorAConvertir;
     }
-    public String getMonedaExtranjera() {
-        return monedaExtranjera;
-    }
-    public void setMonedaExtranjera(String monedaExtranjera) {
-        this.monedaExtranjera = monedaExtranjera;
-    }
     public double getTasaDeConversion() {
         return tasaDeConversion;
-    }
-    public void setTasaDeConversion(double tasaDeConversion) {
-        this.tasaDeConversion = tasaDeConversion;
     }
     public double getResultado() {
         return resultado;
