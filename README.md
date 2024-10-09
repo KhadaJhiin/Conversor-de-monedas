@@ -18,7 +18,6 @@ Este proyecto desarrollado en Java permite realizar conversiones entre diferente
 Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente instalado:
 
 - [Java JDK 11 o superior]
-- [GSON] para el manejo de JSON
 - Conexión a internet para acceder a la API de conversión de monedas
 
 ## Instalación
@@ -38,9 +37,22 @@ Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente insta
 
 2. Para las opciones (1, 2, 3, 4, 5, 6) Ingresa el valor a convertir.
 
-   <img src="/images/usoConvertirMoneda" alt="Ejemplo usando la opcion 5" width="500">
+   <img src="/images/usoConvertirMoneda.jpg" alt="Ejemplo usando la opcion 5" width="500">
    
-3. La opcion 7 nos devuelve las ultimas 5 conversiones realizadas en el ultimo dia que se uso la app
+3. La opcion 7 nos devuelve las ultimas 5 conversiones realizadas en el ultimo DIA de uso de la app.
+
+   <img src="/images/usoHistorialParcial.jpg" alt="Ejemplo usando la opcion 7" width="500">
+
+4. La opcion 8 nos solicita una entrada de acuerdo a la lista de fechas de las cuales se tiene un historial de
+   conversiones realizadas.
+
+   <img src="/images/opcionesFechas.jpg" alt="Ejemplo usando la opcion 8 entrada" width="500">
+   
+   <img src="/images/usoHisotialTotal.jpg" alt="Ejemplo usando la opcion 8 historial" width="500">
+   
+5. Por ultimo con la opcion "9" se termina el programa
+
+   
 
 ## Contribuciones
 
