@@ -31,7 +31,7 @@ public class Menu {
                 5)          Dolar   ===>  Peso Colombiano
                 6) Peso Colombiano  ===>  Dolar
                 7) Ultimas conversiones
-                8) Historial ultimos 5 dias 
+                8) Historial completo 
                 9) Salir 
                 
                 Presione un numero, de acuerdo a la conversion que desea realizar: 

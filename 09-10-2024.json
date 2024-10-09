@@ -52,5 +52,41 @@
     "monedaExtranjera": "USD",
     "tasaDeConversion": 2.3946E-4,
     "resultado": 0.0143676
+  },
+  {
+    "fechaCreacion": "09-10-2024",
+    "horaDeConversion": "12:17:33",
+    "monedaBase": "COP",
+    "valorAConvertir": 10.0,
+    "monedaExtranjera": "USD",
+    "tasaDeConversion": 2.3628E-4,
+    "resultado": 0.0023628
+  },
+  {
+    "fechaCreacion": "09-10-2024",
+    "horaDeConversion": "12:18:26",
+    "monedaBase": "USD",
+    "valorAConvertir": 10.0,
+    "monedaExtranjera": "COP",
+    "tasaDeConversion": 4232.2537,
+    "resultado": 42322.537000000004
+  },
+  {
+    "fechaCreacion": "09-10-2024",
+    "horaDeConversion": "12:18:26",
+    "monedaBase": "USD",
+    "valorAConvertir": 10.0,
+    "monedaExtranjera": "COP",
+    "tasaDeConversion": 4232.2537,
+    "resultado": 42322.537000000004
+  },
+  {
+    "fechaCreacion": "09-10-2024",
+    "horaDeConversion": "12:18:26",
+    "monedaBase": "USD",
+    "valorAConvertir": 10.0,
+    "monedaExtranjera": "COP",
+    "tasaDeConversion": 4232.2537,
+    "resultado": 42322.537000000004
   }
 ]
